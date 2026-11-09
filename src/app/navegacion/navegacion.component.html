@@ -1,0 +1,19 @@
+<header class="encabezado">
+
+    <div class="logo">
+        <span class="logo-icon">♨</span>
+        <span class="separador"></span>
+        <a routerLink="/inicio" class="enlace-logo">
+    <span class="nombre-logo">MANILA<span>.</span></span>
+</a>
+    </div>
+
+    <nav class="enlaces">
+        <a routerLink="/inicio" routerLinkActive="activo" [routerLinkActiveOptions]="{ exact: true }">Inicio</a>
+        <a routerLink="/comidas" routerLinkActive="activo">Comidas</a>
+        <a routerLink="/bebidas" routerLinkActive="activo">Bebidas</a>
+        <a routerLink="/pedidos" routerLinkActive="activo">Pedidos</a>
+        <a routerLink="/juego" routerLinkActive="activo">Juego</a>
+    </nav>
+
+</header>

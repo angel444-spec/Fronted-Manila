@@ -1,0 +1,110 @@
+<section class="portada">
+
+    <div class="contenido">
+
+        <p class="subtitulo">BIENVENIDO A MANILA</p>
+
+        <h1>El sabor que convierte cada momento en algo especial</h1>
+
+        <p class="descripcion">
+            Disfruta una experiencia gastronómica única.
+            Descubre nuestras deliciosas comidas y bebidas,
+            preparadas para sorprender tu paladar.
+        </p>
+
+        <div class="botones">
+            <button routerLink="/comidas">
+                Explorar comidas
+            </button>
+
+            <button class="btn-secundario" routerLink="/bebidas">
+                Ver bebidas
+            </button>
+        </div>
+
+    </div>
+
+    <div class="imagen">
+        <img
+            src="https://images.unsplash.com/photo-1547592180-85f173990554?w=900"
+            alt="Presentación de MANILA">
+    </div>
+
+</section>
+
+<section class="destacados">
+
+    <p class="subtitulo">DESCUBRE MANILA</p>
+
+    <h2>Nuestras especialidades</h2>
+
+    <p class="introduccion">
+        Una selección de sabores pensada para disfrutar cada instante.
+    </p>
+
+    <div class="tarjetas">
+
+        <div class="tarjeta">
+
+            <img
+                src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=900"
+                alt="Comida saludable">
+
+            <div class="tarjeta-contenido">
+
+                <h3>Comidas deliciosas</h3>
+
+                <p>
+                    Descubre platos preparados con ingredientes
+                    seleccionados y sabores irresistibles.
+                </p>
+
+                <button routerLink="/comidas">
+                    Ver comidas
+                </button>
+
+            </div>
+
+        </div>
+
+        <div class="tarjeta">
+
+            <img
+                *ngIf="bebidas.length > 0"
+                [src]="bebidas[0].strDrinkThumb"
+                [alt]="bebidas[0].strDrink">
+
+            <div class="tarjeta-contenido">
+
+                <h3>Bebidas refrescantes</h3>
+
+                <p>
+                    Acompaña tus comidas con bebidas deliciosas
+                    y refrescantes para cualquier ocasión.
+                </p>
+
+                <button routerLink="/bebidas">
+                    Ver bebidas
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<section class="invitacion">
+
+    <h2>¡Tu próxima experiencia favorita te espera!</h2>
+
+    <p>
+        Explora nuestro menú y encuentra algo delicioso para disfrutar.
+    </p>
+
+    <button routerLink="/comidas">
+        Conocer nuestro menú
+    </button>
+
+</section>

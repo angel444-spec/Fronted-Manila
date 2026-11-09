@@ -1,0 +1,98 @@
+<section class="contenedor">
+
+    <div class="notificacion" *ngIf="mensaje">
+        <span class="icono-notificacion">✓</span>
+        <span>{{ mensaje }}</span>
+    </div>
+
+    <h1>Nuestras comidas</h1>
+
+    <p>Explora nuestra variedad de deliciosos platos.</p>
+
+    <div class="busqueda">
+
+        <input
+            type="text"
+            placeholder="Buscar comida por nombre"
+            [(ngModel)]="nombre"
+            (keyup.enter)="buscarNombre()">
+
+        <button (click)="buscarNombre()">
+            Buscar nombre
+        </button>
+
+        <input
+            type="text"
+            placeholder="Buscar por ingrediente"
+            [(ngModel)]="ingrediente"
+            (keyup.enter)="buscarIngrediente()">
+
+        <button (click)="buscarIngrediente()">
+            Buscar ingrediente
+        </button>
+
+    </div>
+
+    <h2>Categorías</h2>
+
+    <div class="categorias">
+
+        <button (click)="filtrar('Todas')">Todas</button>
+        <button (click)="filtrar('Beef')">Beef</button>
+        <button (click)="filtrar('Chicken')">Chicken</button>
+        <button (click)="filtrar('Dessert')">Dessert</button>
+        <button (click)="filtrar('Seafood')">Seafood</button>
+        <button (click)="filtrar('Vegetarian')">Vegetarian</button>
+        <button (click)="filtrar('Pasta')">Pasta</button>
+
+    </div>
+
+    <h2>Menú de comidas</h2>
+
+    <p *ngIf="cargando">
+        Cargando comidas...
+    </p>
+
+    <p *ngIf="error">
+        {{ error }}
+    </p>
+
+    <div class="productos" *ngIf="!cargando">
+
+        <div class="producto" *ngFor="let comida of comidas">
+
+            <img
+                [src]="comida.strMealThumb"
+                [alt]="comida.strMeal">
+
+            <h3>{{ comida.strMeal }}</h3>
+
+            <div class="ingredientes">
+
+                <h4>Ingredientes:</h4>
+
+                <ul>
+                    <li *ngFor="let ingrediente of comida.ingredientes">
+                        {{ ingrediente }}
+                    </li>
+                </ul>
+
+            </div>
+
+            <h4 class="precio">
+                {{ comida.precio | currency:'COP':'symbol-narrow':'1.0-0' }}
+            </h4>
+
+            <button (click)="agregar(comida)">
+                Agregar al pedido
+            </button>
+
+        </div>
+
+    </div>
+
+    <p *ngIf="!cargando && comidas.length === 0 && !error">
+        No se encontraron comidas.
+    </p>
+
+</section>

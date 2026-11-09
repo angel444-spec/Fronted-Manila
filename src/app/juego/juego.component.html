@@ -1,0 +1,47 @@
+
+<section class="juego">
+
+    <h1>¡Encuentra los sabores MANILA!</h1>
+
+    <p>
+        Encuentra las 8 parejas de comidas y bebidas escondidas entre las 16 tarjetas.
+    </p>
+
+    <div class="estadisticas">
+        <span>Intentos: {{ intentos }}</span>
+        <span>Parejas: {{ parejasEncontradas }}/8</span>
+    </div>
+
+    <div class="tablero">
+
+        <div
+            class="casilla"
+            *ngFor="let carta of cartas"
+            [class.descubierta]="carta.descubierta"
+            [class.encontrada]="carta.encontrada"
+            (click)="descubrir(carta)">
+
+            <ng-container *ngIf="carta.descubierta || carta.encontrada; else oculta">
+
+                <img [src]="carta.imagen" [alt]="carta.nombre">
+                <span>{{ carta.nombre }}</span>
+
+            </ng-container>
+
+            <ng-template #oculta>
+                ?
+            </ng-template>
+
+        </div>
+
+    </div>
+
+    <div class="mensaje" *ngIf="juegoTerminado">
+        ¡Felicidades! Encontraste todas las parejas.
+    </div>
+
+    <button (click)="nuevoJuego()">
+        {{ juegoTerminado ? 'Jugar nuevamente' : 'Reiniciar juego' }}
+    </button>
+
+</section>

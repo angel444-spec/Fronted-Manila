@@ -1,0 +1,257 @@
+
+.portada {
+    background: #FAF3E8;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 80px 8%;
+    gap: 50px;
+    min-height: 520px;
+}
+
+.contenido {
+    flex: 1;
+}
+
+.subtitulo {
+    color: #B87945;
+    font-weight: bold;
+    letter-spacing: 3px;
+    font-size: 14px;
+}
+
+.contenido h1 {
+    font-size: 48px;
+    color: #241812;
+    line-height: 1.2;
+    margin: 20px 0;
+}
+
+.contenido .descripcion {
+    color: #663D2E;
+    line-height: 1.8;
+    font-size: 16px;
+    margin-bottom: 25px;
+}
+
+.botones {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.contenido button,
+.tarjeta button,
+.invitacion button {
+    background: #B87945;
+    color: white;
+    border: 2px solid #B87945;
+    padding: 13px 25px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.contenido button:hover,
+.tarjeta button:hover,
+.invitacion button:hover {
+    background: #663D2E;
+    border-color: #663D2E;
+    transform: translateY(-3px);
+}
+
+.contenido .btn-secundario {
+    background: transparent;
+    color: #663D2E;
+    border: 2px solid #663D2E;
+}
+
+.contenido .btn-secundario:hover {
+    background: #663D2E;
+    color: white;
+}
+
+.imagen {
+    flex: 1;
+    width: 48%;
+    border: 5px solid #B87945;
+    border-radius: 22px;
+    padding: 7px;
+    background: #E7C9A5;
+    overflow: hidden;
+    box-shadow: 0 8px 20px rgba(36, 24, 18, 0.18);
+}
+
+.imagen img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    display: block;
+    border-radius: 14px;
+    transition: transform 0.4s ease;
+}
+
+.imagen:hover img {
+    transform: scale(1.04);
+}
+
+.destacados {
+    padding: 75px 8%;
+    text-align: center;
+    background: white;
+}
+
+.destacados h2 {
+    color: #241812;
+    font-size: 36px;
+    margin: 10px 0;
+}
+
+.introduccion {
+    color: #663D2E;
+    margin-bottom: 35px;
+    line-height: 1.7;
+    font-size: 16px;
+}
+
+.tarjetas {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    gap: 30px;
+    margin-top: 35px;
+    flex-wrap: wrap;
+}
+
+.tarjeta {
+    width: 350px;
+    max-width: 100%;
+    background: #FAF3E8;
+    border-radius: 16px;
+    overflow: hidden;
+    padding-bottom: 25px;
+    box-shadow: 0 5px 18px rgba(36, 24, 18, 0.10);
+    transition: all 0.3s ease;
+}
+
+.tarjeta:hover {
+    transform: translateY(-7px);
+    box-shadow: 0 12px 25px rgba(36, 24, 18, 0.16);
+}
+
+.tarjeta img {
+    width: 100%;
+    height: 230px;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+}
+
+.tarjeta:hover img {
+    transform: scale(1.04);
+}
+
+.tarjeta-contenido {
+    padding: 22px;
+}
+
+.tarjeta h3 {
+    color: #663D2E;
+    font-size: 22px;
+    margin-bottom: 12px;
+}
+
+.tarjeta p {
+    color: #663D2E;
+    line-height: 1.7;
+    margin-bottom: 20px;
+}
+
+.tarjeta button {
+    width: 100%;
+}
+
+.invitacion {
+    background: #241812;
+    color: #FAF3E8;
+    text-align: center;
+    padding: 60px 8%;
+}
+
+.invitacion h2 {
+    color: #E7C9A5;
+    font-size: 32px;
+    margin-bottom: 15px;
+}
+
+.invitacion p {
+    color: #FAF3E8;
+    margin-bottom: 25px;
+    line-height: 1.7;
+}
+
+.invitacion button {
+    background: #B87945;
+    border-color: #B87945;
+}
+
+@media (max-width: 850px) {
+    .portada {
+        flex-direction: column;
+        padding: 50px 6%;
+        text-align: center;
+    }
+
+    .contenido h1 {
+        font-size: 36px;
+    }
+
+    .botones {
+        justify-content: center;
+    }
+
+    .imagen {
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .imagen img {
+        height: 300px;
+    }
+
+    .destacados {
+        padding: 55px 5%;
+    }
+}
+
+@media (max-width: 480px) {
+    .portada {
+        padding: 40px 5%;
+    }
+
+    .contenido h1 {
+        font-size: 30px;
+    }
+
+    .destacados h2 {
+        font-size: 27px;
+    }
+
+    .invitacion h2 {
+        font-size: 24px;
+    }
+
+    .tarjeta {
+        width: 100%;
+    }
+
+    .contenido button {
+        width: 100%;
+    }
+
+    .imagen img {
+        height: 240px;
+    }
+}

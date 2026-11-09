@@ -1,0 +1,123 @@
+<section class="contenedor">
+
+    <div class="notificacion" *ngIf="mensaje">
+        <span class="icono-notificacion">✓</span>
+        <span>{{ mensaje }}</span>
+    </div>
+
+    <h1>Nuestras bebidas</h1>
+
+    <p>Encuentra la bebida perfecta para cada ocasión.</p>
+
+    <div class="busqueda">
+
+        <input
+            type="text"
+            placeholder="Buscar bebida por nombre"
+            [(ngModel)]="nombre"
+            (keyup.enter)="buscarNombre()">
+
+        <button (click)="buscarNombre()">
+            Buscar nombre
+        </button>
+
+        <input
+            type="text"
+            placeholder="Buscar ingrediente"
+            [(ngModel)]="ingrediente"
+            (keyup.enter)="buscarIngrediente()">
+
+        <button (click)="buscarIngrediente()">
+            Buscar ingrediente
+        </button>
+
+    </div>
+
+    <div class="filtros">
+
+        <div>
+            <label>Categoría</label>
+
+            <select
+                #categoria
+                (change)="filtrarCategoria(categoria.value)">
+
+                <option value="Todas">Todas</option>
+                <option value="Ordinary Drink">Ordinary Drink</option>
+                <option value="Cocktail">Cocktail</option>
+                <option value="Shake">Shake</option>
+                <option value="Coffee / Tea">Coffee / Tea</option>
+                <option value="Soft Drink">Soft Drink</option>
+                <option value="Other / Unknown">Other / Unknown</option>
+
+            </select>
+        </div>
+
+        <div>
+            <label>Tipo de bebida</label>
+
+            <select
+                [(ngModel)]="tipoSeleccionado"
+                (change)="filtrarTipo(tipoSeleccionado)">
+
+                <option value="Non_Alcoholic">Sin alcohol</option>
+                <option value="Alcoholic">Con alcohol</option>
+
+            </select>
+        </div>
+
+    </div>
+
+    <h2>Nuestro menú de bebidas</h2>
+
+    <p *ngIf="cargando">
+        Cargando bebidas...
+    </p>
+
+    <p *ngIf="error">
+        {{ error }}
+    </p>
+
+    <div class="productos" *ngIf="!cargando">
+
+        <div class="producto" *ngFor="let bebida of bebidas">
+
+            <img
+                [src]="bebida.strDrinkThumb"
+                [alt]="bebida.strDrink">
+
+            <h3>{{ bebida.strDrink }}</h3>
+
+            <p>{{ bebida.strCategory }}</p>
+
+            <p>{{ bebida.strAlcoholic }}</p>
+
+            <div class="ingredientes">
+
+                <h4>Ingredientes:</h4>
+
+                <ul>
+                    <li *ngFor="let ingrediente of bebida.ingredientes">
+                        {{ ingrediente }}
+                    </li>
+                </ul>
+
+            </div>
+
+            <h4 class="precio">
+                {{ bebida.precio | currency:'COP':'symbol-narrow':'1.0-0' }}
+            </h4>
+
+            <button (click)="agregar(bebida)">
+                Agregar al pedido
+            </button>
+
+        </div>
+
+    </div>
+
+    <p *ngIf="!cargando && bebidas.length === 0 && !error">
+        No se encontraron bebidas.
+    </p>
+
+</section>

@@ -1,0 +1,91 @@
+.encabezado {
+    background: #171717;
+    border-bottom: 1px solid #B87945;
+    padding: 15px 5% 0;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 12px;
+    height: 75px;
+}
+
+.logo-icon {
+    color: #D6A443;
+    font-size: 45px;
+}
+
+.separador {
+    width: 2px;
+    height: 45px;
+    background: #B87945;
+}
+
+.nombre-logo {
+    color: white;
+    font-size: 30px;
+    font-weight: bold;
+    letter-spacing: 4px;
+}
+
+.nombre-logo span {
+    color: #D6A443;
+}
+
+.enlaces {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    padding: 18px 0;
+}
+
+.enlaces a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    transition: color 0.3s;
+}
+
+.enlaces a:hover,
+.enlaces a.activo {
+    color: #D6A443;
+}
+
+@media (max-width: 600px) {
+    .enlaces {
+        flex-wrap: wrap;
+        gap: 15px 25px;
+    }
+
+    .nombre-logo {
+        font-size: 26px;
+    }
+}
+
+
+.enlace-logo {
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.nombre-logo {
+    color: #B87945;
+    font-weight: bold;
+    font-size: 28px;
+    letter-spacing: 2px;
+    transition: 0.3s ease;
+}
+
+.nombre-logo span {
+    color: #E7C9A5;
+}
+
+.enlace-logo:hover .nombre-logo {
+    color: #E7C9A5;
+    transform: scale(1.05);
+}

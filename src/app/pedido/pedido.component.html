@@ -1,0 +1,154 @@
+
+<section class="contenedor">
+
+    <h1>Mis pedidos</h1>
+    <p>Revisa los productos que has seleccionado.</p>
+
+    <div class="productos" *ngIf="productos.length > 0">
+
+        <div class="producto" *ngFor="let producto of productos">
+
+            <img [src]="producto.imagen" [alt]="producto.nombre">
+
+            <h3>{{ producto.nombre }}</h3>
+
+            <p>{{ producto.tipo }}</p>
+
+            <h4>
+                {{ producto.precio | currency:'COP':'symbol-narrow':'1.0-0' }}
+            </h4>
+
+            <div class="cantidad">
+
+                <button type="button" (click)="disminuir(producto)">-</button>
+
+                <span>{{ producto.cantidad }}</span>
+
+                <button type="button" (click)="aumentar(producto)">+</button>
+
+            </div>
+
+            <p>
+                Subtotal:
+                <strong>
+                    {{ producto.precio * producto.cantidad | currency:'COP':'symbol-narrow':'1.0-0' }}
+                </strong>
+            </p>
+
+            <button
+                type="button"
+                class="btn-eliminar"
+                (click)="eliminar(producto)">
+                Eliminar
+            </button>
+
+        </div>
+
+    </div>
+
+    <div class="pedido-vacio" *ngIf="productos.length === 0">
+
+        <h3>No tienes productos en tu pedido.</h3>
+        <p>Agrega comidas o bebidas para comenzar.</p>
+
+    </div>
+
+    <div class="resumen" *ngIf="productos.length > 0">
+
+        <h3>Resumen del pedido</h3>
+
+        <p>
+            Cantidad de productos:
+            <strong>{{ cantidadProductos }}</strong>
+        </p>
+
+        <h2>
+            Total:
+            {{ total | currency:'COP':'symbol-narrow':'1.0-0' }}
+        </h2>
+
+        <button
+            type="button"
+            class="btn-vaciar"
+            (click)="vaciar()">
+            Vaciar pedido
+        </button>
+
+    </div>
+
+    <div class="formulario-pedido" *ngIf="productos.length > 0">
+
+        <h2>Datos del cliente</h2>
+
+        <p>Completa tus datos para realizar el pedido.</p>
+
+        <form #formPedido="ngForm" (ngSubmit)="confirmarPedido()">
+
+            <div class="campo">
+                <label for="nombre">Nombre completo:</label>
+
+                <input
+                    type="text"
+                    id="nombre"
+                    name="nombre"
+                    [(ngModel)]="nombreCliente"
+                    placeholder="Escribe tu nombre completo"
+                    required
+                    minlength="3">
+            </div>
+
+            <div class="campo">
+                <label for="celular">Número de celular:</label>
+
+                <input
+                    type="tel"
+                    id="celular"
+                    name="celular"
+                    [(ngModel)]="celular"
+                    placeholder="Ejemplo: 3001234567"
+                    required
+                    pattern="[0-9]{10}"
+                    maxlength="10">
+            </div>
+
+            <div class="campo">
+                <label for="direccion">Dirección:</label>
+
+                <input
+                    type="text"
+                    id="direccion"
+                    name="direccion"
+                    [(ngModel)]="direccion"
+                    placeholder="Escribe tu dirección"
+                    required>
+            </div>
+
+            <div class="campo">
+                <label>Fecha del pedido:</label>
+
+                <input
+                    type="text"
+                    [value]="fechaActual"
+                    readonly>
+            </div>
+
+            <button
+                type="submit"
+                class="btn-confirmar"
+                [disabled]="formPedido.invalid">
+                Realizar pedido
+            </button>
+
+            <button
+                type="button"
+                class="btn-pdf"
+                *ngIf="pedidoConfirmado"
+                (click)="descargarPDF()">
+                Descargar comprobante PDF
+            </button>
+
+        </form>
+
+    </div>
+
+</section>
