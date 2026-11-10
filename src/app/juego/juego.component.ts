@@ -63,7 +63,7 @@ export class JuegoComponent implements OnInit {
       },
       {
         nombre: 'Bebida',
-        imagen: 'https://images.unsplash.com/photo-1513558161293-cdaf765edfd4?w=300'
+        imagen: 'https://images.unsplash.com/photo-1544145945-f90425340c7e?w=300'
       }
     ];
 
