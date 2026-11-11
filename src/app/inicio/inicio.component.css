@@ -1,4 +1,5 @@
 
+/* PORTADA PRINCIPAL */
 .portada {
     background: #FAF3E8;
     display: flex;
@@ -62,6 +63,7 @@
     transform: translateY(-3px);
 }
 
+/* BOTÓN SECUNDARIO */
 .contenido .btn-secundario {
     background: transparent;
     color: #663D2E;
@@ -73,6 +75,7 @@
     color: white;
 }
 
+/* IMAGEN PRINCIPAL */
 .imagen {
     flex: 1;
     width: 48%;
@@ -97,6 +100,7 @@
     transform: scale(1.04);
 }
 
+/* SECCIÓN DE ESPECIALIDADES */
 .destacados {
     padding: 75px 8%;
     text-align: center;
@@ -116,6 +120,7 @@
     font-size: 16px;
 }
 
+/* TARJETAS */
 .tarjetas {
     display: flex;
     justify-content: center;
@@ -173,6 +178,45 @@
     width: 100%;
 }
 
+/* PRECIO */
+.tarjeta .precio {
+    color: #B87945;
+    font-size: 23px;
+    font-weight: bold;
+    margin-bottom: 18px;
+}
+
+/* NOTIFICACIÓN */
+.notificacion {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background: #241812;
+    color: #FAF3E8;
+    padding: 15px 22px;
+    border-left: 5px solid #B87945;
+    border-radius: 8px;
+    width: fit-content;
+    max-width: 100%;
+    margin: 25px auto;
+    box-shadow: 0 5px 15px rgba(36, 24, 18, 0.15);
+    animation: aparecer 0.3s ease;
+}
+
+.icono-notificacion {
+    color: #E7C9A5;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.tarjeta button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* INVITACIÓN FINAL */
 .invitacion {
     background: #241812;
     color: #FAF3E8;
@@ -192,12 +236,22 @@
     line-height: 1.7;
 }
 
-.invitacion button {
-    background: #B87945;
-    border-color: #B87945;
+/* ANIMACIÓN */
+@keyframes aparecer {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
+/* RESPONSIVE */
 @media (max-width: 850px) {
+
     .portada {
         flex-direction: column;
         padding: 50px 6%;
@@ -227,6 +281,7 @@
 }
 
 @media (max-width: 480px) {
+
     .portada {
         padding: 40px 5%;
     }
