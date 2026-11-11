@@ -1,3 +1,4 @@
+
 <section class="portada">
 
     <div class="contenido">
@@ -13,9 +14,7 @@
         </p>
 
         <div class="botones">
-            <button routerLink="/comidas">
-                Explorar comidas
-            </button>
+            <button routerLink="/comidas">Explorar comidas</button>
 
             <button class="btn-secundario" routerLink="/bebidas">
                 Ver bebidas
@@ -39,28 +38,45 @@
     <h2>Nuestras especialidades</h2>
 
     <p class="introduccion">
-        Una selección de sabores pensada para disfrutar cada instante.
+        Conoce nuestros productos estrella y disfruta
+        de una experiencia gastronómica especial.
     </p>
+
+    <div class="notificacion" *ngIf="mensaje">
+        <span class="icono-notificacion">✓</span>
+        <span>{{ mensaje }}</span>
+    </div>
 
     <div class="tarjetas">
 
         <div class="tarjeta">
 
             <img
-                src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=900"
-                alt="Comida saludable">
+                *ngIf="comidaEstrella"
+                [src]="comidaEstrella.strMealThumb"
+                [alt]="comidaEstrella.strMeal">
 
             <div class="tarjeta-contenido">
 
-                <h3>Comidas deliciosas</h3>
+                <p class="subtitulo">PLATO ESTRELLA</p>
+
+                <h3>
+                    {{ comidaEstrella?.strMeal || 'Cargando plato...' }}
+                </h3>
 
                 <p>
-                    Descubre platos preparados con ingredientes
-                    seleccionados y sabores irresistibles.
+                    Una de nuestras selecciones gastronómicas,
+                    preparada para sorprender tu paladar.
                 </p>
 
-                <button routerLink="/comidas">
-                    Ver comidas
+                <p class="precio" *ngIf="comidaEstrella">
+                    {{ comidaEstrella.precio | currency:'COP':'symbol-narrow':'1.0-0' }}
+                </p>
+
+                <button
+                    (click)="agregarComida()"
+                    [disabled]="!comidaEstrella">
+                    Agregar al pedido
                 </button>
 
             </div>
@@ -70,21 +86,31 @@
         <div class="tarjeta">
 
             <img
-                *ngIf="bebidas.length > 0"
-                [src]="bebidas[0].strDrinkThumb"
-                [alt]="bebidas[0].strDrink">
+                *ngIf="bebidaEstrella"
+                [src]="bebidaEstrella.strDrinkThumb"
+                [alt]="bebidaEstrella.strDrink">
 
             <div class="tarjeta-contenido">
 
-                <h3>Bebidas refrescantes</h3>
+                <p class="subtitulo">BEBIDA ESTRELLA</p>
+
+                <h3>
+                    {{ bebidaEstrella?.strDrink || 'Cargando bebida...' }}
+                </h3>
 
                 <p>
-                    Acompaña tus comidas con bebidas deliciosas
-                    y refrescantes para cualquier ocasión.
+                    Una bebida refrescante para acompañar
+                    tus momentos especiales.
                 </p>
 
-                <button routerLink="/bebidas">
-                    Ver bebidas
+                <p class="precio" *ngIf="bebidaEstrella">
+                    {{ bebidaEstrella.precio | currency:'COP':'symbol-narrow':'1.0-0' }}
+                </p>
+
+                <button
+                    (click)="agregarBebida()"
+                    [disabled]="!bebidaEstrella">
+                    Agregar al pedido
                 </button>
 
             </div>
